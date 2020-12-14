@@ -15,6 +15,7 @@
 GitCommit() {
     InputBox, UserInput, Commit message, Commit message, , 400, 140, , , Locale, 60, %clipboard%
     if (ErrorLevel == 0) {
+        SendInput, {enter}
         SendInput, git add -A{enter}
         SendInput, git commit -am `"%UserInput%`"{enter}
         SendInput, git push origin master{enter}
