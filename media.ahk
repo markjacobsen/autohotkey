@@ -12,7 +12,10 @@
 ; Play/pause toggle
 ^!+P::Send, {Media_Play_Pause}
 
-; Mute/unmute toggle
+; Volume Mute/unmute toggle
+^!+V::Run, nircmd.exe mutesysvolume 2
+
+; Mic Mute/unmute toggle
 ^!+M::Run, nircmd.exe mutesysvolume 2 microphone
 
 ; Volume up/down
