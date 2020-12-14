@@ -1,29 +1,12 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+These are a set of AutoHotKey scripts to help make your life easier
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+* Clone the repository to your location of choice
+* From a command line, run "install.bat [fullDestPath] [workstationName]"
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Author: MarkJacobsen.net
