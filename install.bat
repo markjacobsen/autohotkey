@@ -19,8 +19,9 @@ xcopy *.ahk %dest%
 mkdir %dest%\%wsName%
 xcopy workstation\*.ahk %dest%\%wsName%
 
+echo "Copied to %wsName%"
 pause
-exit
+GOTO END
 
 
 :ERR
@@ -28,3 +29,5 @@ echo "Incorrect command format"
 echo "install.bat [fullDestPath] [workstationName]"
 pause
 exit
+
+:END
