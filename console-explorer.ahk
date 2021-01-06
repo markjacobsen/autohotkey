@@ -1,36 +1,30 @@
 ;--------------------------------------------
 ; https://markjacobsen.net
-; Text expansion to simplify working with the
-; console/command line and explorer
 ;--------------------------------------------
 
-GroupAdd, CLASS_CONSOLE, ahk_class ConsoleWindowClass
-GroupAdd, CLASS_FILE_EXPLORER, ahk_class CabinetWClass
-GroupAdd, CLASS_FILE_EXPLORER, ahk_class ExploreWClass
-
-;Enable paste via ctrl+v
-#IfWinActive ahk_group CLASS_CONSOLE
+; Enable paste via ctrl+v
+#IfWinActive ahk_group CMD_PROMPT
 ^V::
 SendInput {Raw}%clipboard%
 Return
 #IfWinActive
 
-
-#IfWinActive ahk_group CLASS_CONSOLE
+; Use "page up" key to scroll up
+#IfWinActive ahk_group CMD_PROMPT
 PgUp::
 Send {WheelUp}
 Return
 #IfWinActive
 
-
-#IfWinActive ahk_group CLASS_CONSOLE
+; Use "page down" key to scroll down
+#IfWinActive ahk_group CMD_PROMPT
 PgDn::
 Send {WheelDown}
 Return
 #IfWinActive
 
-
-#IfWinActive ahk_group CLASS_FILE_EXPLORER ; open current explorer folder in cmd prompt on CTRL+ALT+P
+; open current explorer folder in cmd prompt on CTRL+ALT+P
+#IfWinActive ahk_group FILE_EXPLORER
 ^!P::
 send !{d}
 send c:\windows\system32\cmd.exe .

@@ -5,7 +5,8 @@
 ; CTL+ALT+SHIFT+[key]
 ;
 ; To get the full benefit, you must have 
-; NirCmd in your C:\Windows directory
+; NirCmd.exe in your C:\Windows directory
+; or in the same directory as the AHK exe
 ; https://www.nirsoft.net/utils/nircmd.html
 ;--------------------------------------------
 

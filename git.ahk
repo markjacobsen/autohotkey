@@ -1,6 +1,5 @@
 ;--------------------------------------------
 ; https://markjacobsen.net
-; Text expansion to simplify working with git
 ;
 ; Note: 
 ; :O: is for text expansion/replacement

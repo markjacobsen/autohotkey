@@ -1,6 +1,5 @@
 ;--------------------------------------------
 ; https://markjacobsen.net
-; Text expansion to simplify working with dates/times
 ;--------------------------------------------
 
 ; Timestamp ("human" format)
