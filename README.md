@@ -11,6 +11,7 @@ These are a set of AutoHotKey scripts to help make your life easier
 
 ** ALT + [key] hotkeys are intended for input->action **
 - ALT + G = Google It
+- ALT + U = Go to URL
 
 ** CTRL + ALT + [key] hotkeys are app/context specific **
 - CTRL + ALT + D = Close current tab
