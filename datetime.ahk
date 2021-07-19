@@ -26,6 +26,12 @@
     SendInput %CurrentDateTime%
     return
 
+; Time in "human" format (ex: 6:15 pm)
+:O:!t::
+    FormatTime, CurrentDateTime,, h:mm tt
+    SendInput %CurrentDateTime%
+    return
+
 ; File name date
 :O:!d::
     FormatTime, CurrentDate,, yyyy-MM-dd
