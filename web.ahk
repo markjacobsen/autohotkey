@@ -33,14 +33,18 @@ return
 GoogleIt() {
   InputBox, UserInput, Search Google, Google it..., , 400, 140, , , Locale, 60, %clipboard%
   if (ErrorLevel == 0) {
-    Run https://www.google.com/search?q=%UserInput%
+    If (InStr(UserInput, "http") == 1) {
+      Run %UserInput%
+    } else {
+      Run https://www.google.com/search?q=%UserInput%
+    }
   }
 }
 
 GoToUrl() {
   InputBox, UserInput, Go to URL, URL, , 400, 140, , , Locale, 60, %clipboard%
   if (ErrorLevel == 0) {
-    if (InStr("%UserInput%", "http") <= 0) {
+    if (InStr(UserInput, "http") <= 0) {
       UserInput := "http://" . UserInput
     }
     Run %UserInput%
