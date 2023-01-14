@@ -7,6 +7,7 @@
 ;--------------------------------------------
 
 :O:!gitpull::git pull origin master
+:X:!gitpullreset::GitPullReset()
 :O:!gitfetch::git fetch origin master
 :X:!gitcommit::GitCommit()
 
@@ -19,4 +20,10 @@ GitCommit() {
         SendInput, git commit -am `"%UserInput%`"{enter}
         SendInput, git push origin master{enter}
     }
+}
+
+; Will overwrite what is local with what is remote
+GitPullReset() {
+    SendInput, git fetch --all{enter}
+    SendInput,  git reset --hard origin/master{enter}
 }
