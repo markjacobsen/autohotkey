@@ -10,6 +10,7 @@
 :X:!gitpullreset::GitPullReset()
 :O:!gitfetch::git fetch origin master
 :X:!gitcommit::GitCommit()
+:X:!gitstashapply::GitStashApply()
 
 
 GitCommit() {
@@ -26,4 +27,14 @@ GitCommit() {
 GitPullReset() {
     SendInput, git fetch --all{enter}
     SendInput,  git reset --hard origin/master{enter}
+}
+
+; Useful for when permissions may have been changed
+; on local copy
+; Will overwrite what is local with what is remote
+; then reapply what was local to those updates
+GitStashApply() {
+    SendInput, git stash{enter}
+    SendInput,  git pull{enter}
+    SendInput, git stash apply{enter}
 }
