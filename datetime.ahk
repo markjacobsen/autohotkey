@@ -2,6 +2,8 @@
 ; https://markjacobsen.net
 ;--------------------------------------------
 
+:O:!date-opts::{#}options: dt (MM/dd/yyyy h:mm tt) , ts (yyyy-MM-dd hh:mm:ss) , date (MM/dd/yyyy) , time (h:mm tt) , t (h:mm tt) , tf (hh:mm tt) , d (yyyy-MM-dd) , fts (yyyy-MM-dd_HH-mm)
+
 ; Timestamp ("human" format)
 :O:!dt::
     FormatTime, CurrentDateTime,, MM/dd/yyyy h:mm tt
@@ -29,6 +31,12 @@
 ; Time in "human" format (ex: 6:15 pm)
 :O:!t::
     FormatTime, CurrentDateTime,, h:mm tt
+    SendInput %CurrentDateTime%
+    return
+
+; Time in fixed length "human" format (ex: 06:15 pm)
+:O:!tf::
+    FormatTime, CurrentDateTime,, hh:mm tt
     SendInput %CurrentDateTime%
     return
 
