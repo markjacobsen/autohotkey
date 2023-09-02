@@ -10,8 +10,9 @@
 ;--------------------------------------------
 
 :O:#dk-opts::
-SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune{enter}
+SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune, dklogtail, dkstats{enter}
 SendInput {#}Images: dkimg, dkimgls, dkimgprune, dkimgclean, dkimgpull, dkimgpulla{enter}
+SendInput {#}Volumes: dkvol, dkvolprune{enter}
 SendInput {#}Compose: dkcrecreate, dkcstart, dkcstop, dkcrestart{enter}
 return
 
@@ -27,6 +28,8 @@ return
 :O:!dkrestarta::sudo docker restart $(sudo docker ps -q)
 :O:!dkstopa::sudo docker stop $(sudo docker ps -q)
 :O:!dkprune::sudo docker system prune
+:O:!dklogtail::sudo docker logs --tail 50 --follow --timestamps [container]
+:O:!dkstats::sudo docker stats
 
 ;---Image commands---
 :O:!dkimg::sudo docker images
@@ -35,6 +38,10 @@ return
 :O:!dkimgclean::sudo docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)
 :O:!dkimgpull::sudo docker pull [image]
 :O:!dkimgpulla::for image in $(sudo docker images --format "{{}{{}.Repository{}}{}}:{{}{{}.Tag{}}{}}" | grep -v '<none>'); do sudo docker pull $image; done;
+
+;---Volume commands---
+:O:!dkvol::sudo docker volume ls
+:O:!dkvolprune::sudo docker volume prune
 
 ;---Docker Compose commands (must be in dir w docker-compose.yml file)---
 :O:!dkcrecreate::sudo docker-compose up --force-recreate --build -d
