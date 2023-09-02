@@ -4,23 +4,32 @@
 ; Note: 
 ; :O: is for text expansion/replacement
 ; :X: is what causes a function to run
+;
+; Ref:
+; https://docs.docker.com/engine/reference/commandline/docker/
 ;--------------------------------------------
 
-:O:#docker-opts::{#}options: dockerls , dockerimg , dockerimgpull , dockerrm , dockerprune , dockerbash{enter}{#}   dockercrecreate , dockercstart, dockercstop , dockercrestart{enter}
+:O:#dk-opts::{#}options: 
 
-:O:!dockerls::sudo docker ps
-:O:!dockerlsa::sudo docker ps -a
-:O:!dockerstopped::sudo docker ps --filter "status=exited"
-:O:!dockerps::sudo docker ps
-:O:!dockerlist::sudo docker ps
-:O:!dockerimg::sudo docker images
-:O:!dockerimgclean::sudo docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)
-:O:!dockerimgpull::sudo docker pull [image]
-:O:!dockerrm::sudo docker rm [container]
-:O:!dockerprune::sudo docker image prune -f
-:O:!dockerbash::sudo docker exec -it [container] /bin/bash
+:O:!dkls::sudo docker ps
+:O:!dklsa::sudo docker ps -a
+:O:!dkstopped::sudo docker ps --filter "status=exited"
+:O:!dkps::sudo docker ps
+:O:!dklist::sudo docker ps
+:O:!dkrm::sudo docker rm [container]
+:O:!dkbash::sudo docker exec -it [container] /bin/bash
+:O:!dkrestart::sudo docker restart $(sudo docker ps -q)
 
-:O:!dockercrecreate::sudo docker-compose up --force-recreate --build -d
-:O:!dockercstart::sudo docker-compose up -d
-:O:!dockercstop::sudo docker-compose down
-:O:!dockercrestart::sudo docker-compose restart
+;---Image commands---
+:O:!dkimg::sudo docker images
+:O:!dkimgls::sudo docker images --format "{{.Repository}}:{{.Tag}}" | grep -v '<none>'
+:O:!dkimgprune::sudo docker image prune -af
+:O:!dkimgclean::sudo docker rmi $(sudo docker images --filter "dangling=true" -q --no-trunc)
+:O:!dkimgpull::sudo docker pull [image]
+:O:!dkimgpullall::for image in $(sudo docker images --format "{{.Repository}}:{{.Tag}}" | grep -v '<none>'); do sudo docker pull $image; done;
+
+;---Docker Compose commands (must be in dir w docker-compose.yml file)---
+:O:!dkcrecreate::sudo docker-compose up --force-recreate --build -d
+:O:!dkcstart::sudo docker-compose up -d
+:O:!dkcstop::sudo docker-compose down
+:O:!dkcrestart::sudo docker-compose restart
