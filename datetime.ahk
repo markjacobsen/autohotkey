@@ -2,52 +2,82 @@
 ; https://markjacobsen.net
 ;--------------------------------------------
 
-:O:!date-opts::{#}options: dt (MM/dd/yyyy h:mm tt) , ts (yyyy-MM-dd hh:mm:ss) , date (MM/dd/yyyy) , time (h:mm tt) , t (h:mm tt) , tf (hh:mm tt) , d (yyyy-MM-dd) , fts (yyyy-MM-dd_HH-mm)
+:O:#dt-opts::{#}options where {*}=h (human), s (system), f (filesystem), c (code): dt* , dtd* , dtt*
 
-; Timestamp ("human" format)
-:O:!dt::
-    FormatTime, CurrentDateTime,, MM/dd/yyyy h:mm tt
+; Date/Time ("human" format)
+:O:!dth::
+    FormatTime, CurrentDateTime,, MM/dd/yyyy hh:mm tt
     SendInput %CurrentDateTime%
     return
 
-; Timestamp (code format)
-:O:!ts::
-    FormatTime, CurrentDateTime,, yyyy-MM-dd hh:mm:ss
+; Date/Time ("system" format)
+:O:!dts::
+    FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm
     SendInput %CurrentDateTime%
     return
 
-; Date in "human" format (ex: 04/03/2020)
-:O:!date::
+; Date/Time ("filesystem" format)
+:O:!dtf::
+    FormatTime, CurrentDate,, yyyy-MM-dd_HH-mm
+    SendInput %CurrentDate%
+    return
+
+; Date/Time ("code" format)
+:O:!dtc::
+    FormatTime, CurrentDateTime,, yyyy-MM-dd HH:mm:ss
+    SendInput %CurrentDateTime%
+    return
+
+;---------------------------------------------------------------------
+
+; Date ("human" format)
+:O:!dtdh::
     FormatTime, CurrentDate,, MM/dd/yyyy
     SendInput %CurrentDate%
     return
 
-; Time in "human" format (ex: 6:15 pm)
-:O:!time::
-    FormatTime, CurrentDateTime,, h:mm tt
-    SendInput %CurrentDateTime%
-    return
-
-; Time in "human" format (ex: 6:15 pm)
-:O:!t::
-    FormatTime, CurrentDateTime,, h:mm tt
-    SendInput %CurrentDateTime%
-    return
-
-; Time in fixed length "human" format (ex: 06:15 pm)
-:O:!tf::
-    FormatTime, CurrentDateTime,, hh:mm tt
-    SendInput %CurrentDateTime%
-    return
-
-; File name date
-:O:!d::
+; Date ("system" format)
+:O:!dtds::
     FormatTime, CurrentDate,, yyyy-MM-dd
     SendInput %CurrentDate%
     return
 
-; File name timestamp
-:O:!fts::
-    FormatTime, CurrentDate,, yyyy-MM-dd_HH-mm
+; Date ("filesystem" format)
+:O:!dtdf::
+    FormatTime, CurrentDate,, yyyy-MM-dd
     SendInput %CurrentDate%
     return
+
+; Date ("code" format)
+:O:!dtdc::
+    FormatTime, CurrentDate,, yyyy-MM-dd
+    SendInput %CurrentDate%
+    return
+
+;---------------------------------------------------------------------
+
+; Time ("human" format)
+:O:!dtth::
+    FormatTime, CurrentDateTime,, hh:mm tt
+    SendInput %CurrentDateTime%
+    return
+
+; Time ("system" format)
+:O:!dtts::
+    FormatTime, CurrentDateTime,, HH:mm
+    SendInput %CurrentDateTime%
+    return
+
+; Time ("filesystem" format)
+:O:!dttf::
+    FormatTime, CurrentDateTime,, HH:mm
+    SendInput %CurrentDateTime%
+    return
+
+; Time ("code" format)
+:O:!dttc::
+    FormatTime, CurrentDateTime,, HH:mm:ss
+    SendInput %CurrentDateTime%
+    return
+
+;---------------------------------------------------------------------

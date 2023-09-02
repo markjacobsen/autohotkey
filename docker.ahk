@@ -6,7 +6,7 @@
 ; :X: is what causes a function to run
 ;--------------------------------------------
 
-:O:!docker-opts::{#}options: dockerlist , dockerrecreate , dockerprune , dockerbash , dockerstart, dockerstop , dockerrestart
+:O:#docker-opts::{#}options: dockerlist , dockerrecreate , dockerprune , dockerbash , dockerstart, dockerstop , dockerrestart
 :O:!dockerlist::sudo docker ps
 :O:!dockerrecreate::sudo docker-compose up --force-recreate --build -d
 :O:!dockerprune::sudo docker image prune -f
