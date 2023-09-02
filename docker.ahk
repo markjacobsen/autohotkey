@@ -9,7 +9,11 @@
 ; https://docs.docker.com/engine/reference/commandline/docker/
 ;--------------------------------------------
 
-:O:#dk-opts::{#}options: 
+:O:#dk-opts::
+SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune{enter}
+SendInput {#}Images: dkimg, dkimgls, dkimgprune, dkimgclean, dkimgpull, dkimgpulla{enter}
+SendInput {#}Compose: dkcrecreate, dkcstart, dkcstop, dkcrestart{enter}
+return
 
 :O:!dkls::sudo docker ps
 :O:!dklsa::sudo docker ps -a
