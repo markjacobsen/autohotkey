@@ -41,7 +41,7 @@ return
 
 ;---Volume commands---
 :O:!dkvol::sudo docker volume ls
-:O:!dkvolinspect::sudo docker volume inspect [volume]
+:O:!dkvolinfo::sudo docker volume inspect [volume]
 :O:!dkvolprune::sudo docker volume prune
 
 ;---Docker Compose commands (must be in dir w docker-compose.yml file)---
