@@ -10,7 +10,7 @@
 ;--------------------------------------------
 
 :O:#dk-opts::
-SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune, dklogtail, dkstats{enter}
+SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune, dklogtail, dklog, dkstats{enter}
 SendInput {#}Images: dkimg, dkimgls, dkimgprune, dkimgclean, dkimgpull, dkimgpulla{enter}
 SendInput {#}Volumes: dkvol, dkvolprune{enter}
 SendInput {#}Compose: dkcrecreate, dkcstart, dkcstop, dkcrestart{enter}
@@ -29,6 +29,7 @@ return
 :O:!dkstopa::sudo docker stop $(sudo docker ps -q)
 :O:!dkprune::sudo docker system prune
 :O:!dklogtail::sudo docker logs --tail 50 --follow --timestamps [container]
+:O:!dklog::sudo docker logs -f --details [container]
 :O:!dkstats::sudo docker stats
 
 ;---Image commands---
