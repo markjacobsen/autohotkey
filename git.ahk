@@ -6,6 +6,8 @@
 ; :X: is what causes a function to run
 ;--------------------------------------------
 
+:O:#gitopts::{#}options: gitpull , gitpullreset , gitfetch , gitcommit, gitstashapply
+
 :O:!gitpull::git pull origin master
 :X:!gitpullreset::GitPullReset()
 :O:!gitfetch::git fetch origin master

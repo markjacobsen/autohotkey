@@ -2,7 +2,7 @@
 ; https://markjacobsen.net
 ;--------------------------------------------
 
-:O:#dt-opts::{#}options where {*}=h (human), s (system), f (filesystem), c (code): dt* , dtd* , dtt*
+:O:#dtopts::{#}options where {*}=h (human), s (system), f (filesystem), c (code): dt* , dtd* , dtt*
 
 ; Date/Time ("human" format)
 :O:!dth::

@@ -9,11 +9,12 @@
 ; https://docs.docker.com/engine/reference/commandline/docker/
 ;--------------------------------------------
 
-:O:#dk-opts::
-SendInput {#}Container: dkls, dklsa, dkstopped, dkrm, dkrma, dkbash, dkrestart, dkrestarta, dkstopa, dkprune, dklogtail, dklog, dkstats{enter}
+:O:#dkopts::
+SendInput {#}General: dkls, dklsa, dkstopped, dkrma, dkrestarta, dkstopa, dkprune, dkstats, dksys{enter}
+SendInput {#}Containers: dkcrm, dkcbash, dkcrestart, dkclogtail, dkclog, dkcloguse, dkclogtrun, dkcin{enter}
 SendInput {#}Images: dkimg, dkimgls, dkimgprune, dkimgclean, dkimgpull, dkimgpulla{enter}
 SendInput {#}Volumes: dkvol, dkvolprune{enter}
-SendInput {#}Compose: dkcrecreate, dkcstart, dkcstop, dkcrestart{enter}
+SendInput {#}Compose: dkcomrecreate, dkcomstart, dkcomstop, dkcomrestart{enter}
 return
 
 :O:!dkls::sudo docker ps
@@ -21,16 +22,22 @@ return
 :O:!dkstopped::sudo docker ps --filter "status=exited"
 :O:!dkps::sudo docker ps
 :O:!dklist::sudo docker ps
-:O:!dkrm::sudo docker rm [container]
 :O:!dkrma::sudo docker rm $(sudo docker ps -a -q)
-:O:!dkbash::sudo docker exec -it [container] /bin/bash
-:O:!dkrestart::sudo docker restart [container]
 :O:!dkrestarta::sudo docker restart $(sudo docker ps -q)
 :O:!dkstopa::sudo docker stop $(sudo docker ps -q)
 :O:!dkprune::sudo docker system prune
-:O:!dklogtail::sudo docker logs --tail 50 --follow --timestamps [container]
-:O:!dklog::sudo docker logs -f --details [container]
 :O:!dkstats::sudo docker stats
+:O:!dksys::docker system df -v
+
+;---Container commands---
+:O:!dkcrm::sudo docker rm [container]
+:O:!dkcbash::sudo docker exec -it [container] /bin/bash
+:O:!dkcrestart::sudo docker restart [container]
+:O:!dkclogtail::sudo docker logs --tail 50 --follow --timestamps [container]
+:O:!dkclog::sudo docker logs -f --details [container]
+:O:!dkcloguse::sudo sh -c "du -ch /var/lib/docker/containers/*/*-json.log"
+:O:!dkclogtrun::sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
+:O:!dkcin::sudo docker container inspect [container]
 
 ;---Image commands---
 :O:!dkimg::sudo docker images
@@ -46,7 +53,7 @@ return
 :O:!dkvolprune::sudo docker volume prune
 
 ;---Docker Compose commands (must be in dir w docker-compose.yml file)---
-:O:!dkcrecreate::sudo docker-compose up --force-recreate --build -d
-:O:!dkcstart::sudo docker-compose up -d
-:O:!dkcstop::sudo docker-compose down
-:O:!dkcrestart::sudo docker-compose restart
+:O:!dkcomrecreate::sudo docker-compose up --force-recreate --build -d
+:O:!dkcomstart::sudo docker-compose up -d
+:O:!dkcomstop::sudo docker-compose down
+:O:!dkcomrestart::sudo docker-compose restart
