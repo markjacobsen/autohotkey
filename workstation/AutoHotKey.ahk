@@ -41,5 +41,6 @@ GroupAdd, MS_OUTLOOK, ahk_class rctrl_renwnd32
 #Include %A_ScriptDir%\..\git.ahk
 #Include %A_ScriptDir%\..\db.ahk
 #Include %A_ScriptDir%\..\docker.ahk
+#Include %A_ScriptDir%\..\linux.ahk
 
 ; Add any workstation specific commands down here

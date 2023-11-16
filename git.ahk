@@ -8,9 +8,9 @@
 
 :O:#gitopts::{#}options: gitpull , gitpullreset , gitfetch , gitcommit, gitstashapply
 
-:O:!gitpull::git pull origin master
+:O:.gitpull::git pull origin master
 :X:!gitpullreset::GitPullReset()
-:O:!gitfetch::git fetch origin master
+:O:.gitfetch::git fetch origin master
 :X:!gitcommit::GitCommit()
 :X:!gitstashapply::GitStashApply()
 
